@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import type { Metadata } from "next";
 import { Smooch_Sans } from "next/font/google";
@@ -18,9 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.className} antialiased`}>
-        <div className="flex flex-col p-4 lg:p-6 xl:p-8">
+        <div className="flex flex-col px-4 lg:px-6 xl:px-8">
           <Navbar />
           {children}
+          <Footer />
         </div>
       </body>
     </html>

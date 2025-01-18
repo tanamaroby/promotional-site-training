@@ -31,7 +31,7 @@ const Navbar: FC<NavbarProps> = (props) => {
   /* ------------------------------- USE EFFECTS ------------------------------ */
   /* --------------------------------- RENDER --------------------------------- */
   return (
-    <div className="flex gap-4 items-center justify-between w-full">
+    <div className="flex gap-4 items-center justify-between w-full py-8">
       {/* NAVIGATION */}
       <div className="flex gap-12 items-center uppercase text-3xl">
         {routes.map((route) => {
