@@ -1,4 +1,6 @@
+"use client";
 import Card from "@/components/card";
+import { motion } from "framer-motion";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,14 +15,15 @@ const Container: FC<PropsWithChildren> = (props) => {
   );
 };
 
+const transition = {
+  duration: 1.0,
+};
+
 export default function Home() {
   return (
     <div className="flex flex-col gap-12 w-full">
       {/* HERO */}
       <Container>
-        <p className="text-8xl absolute left-20 font-bold uppercase">
-          Le Tzing Tze
-        </p>
         <Image
           src="/landscape1.jpg"
           alt="Landscape 1"
@@ -28,8 +31,20 @@ export default function Home() {
           objectFit="cover"
           className="-z-10 brightness-90"
         />
-        <Card title="Corporate" src="/cyberpunk1.avif" className="mt-32" />
-        <Card title="Face to face" src="/cyberpunk2.jpg" />
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={transition}
+        >
+          <Card title="Corporate" src="/cyberpunk1.avif" className="mt-32" />
+        </motion.div>
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={transition}
+        >
+          <Card title="Face to face" src="/cyberpunk2.jpg" />
+        </motion.div>
       </Container>
       {/* About Cosplay */}
       <div className="relative flex gap-16 justify-center items-center p-8 py-24 w-full">
@@ -40,10 +55,21 @@ export default function Home() {
           objectFit="cover"
           className="-z-10 brightness-50"
         />
-        <p className="text-6xl font-bold min-w-96 text-center uppercase">
-          About Cosplay
-        </p>
-        <div className="flex flex-col gap-8">
+        <motion.div
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={transition}
+        >
+          <p className="text-6xl font-bold min-w-96 text-center uppercase">
+            About Cosplay
+          </p>
+        </motion.div>
+        <motion.div
+          className="flex flex-col gap-8"
+          initial={{ x: 20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={transition}
+        >
           <p className="font-semibold text-2xl">
             Totam officiis quasi vitae. Occaecati molestiae maxime assumenda
             consectetur sunt accusamus. Corrupti quidem quia quidem quis
@@ -62,24 +88,41 @@ export default function Home() {
             <p>Learn More</p>
             <MoveRight />
           </Link>
-        </div>
+        </motion.div>
       </div>
       {/* Me */}
       <div className="flex justify-center items-center p-8 py-24 w-full">
         {/* Name & Pic */}
         <div className="flex flex-col gap-8">
-          <p className="text-6xl underline uppercase">Yu Tzing Zhe</p>
-          <div className="relative w-[600px] h-[400px]">
+          <motion.div
+            className="flex flex-col gap-8"
+            initial={{ y: -20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={transition}
+          >
+            <p className="text-6xl underline uppercase">Yu Tzing Zhe</p>
+          </motion.div>
+          <motion.div
+            className="relative w-[600px] h-[400px]"
+            initial={{ x: -20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={transition}
+          >
             <Image
               src="/picture2.webp"
               alt="Picture 1"
               layout="fill"
               objectFit="cover"
             />
-          </div>
+          </motion.div>
         </div>
         {/* Introduction */}
-        <div className="flex flex-col text-3xl max-w-96 bg-purple-950 p-8">
+        <motion.div
+          className="flex flex-col text-3xl max-w-96 bg-purple-950 p-8"
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={transition}
+        >
           <p>
             Hello I am Voluptates quos nemo hic laborum voluptatem velit itaque.
             Doloremque autem dolore iusto qui impedit aperiam dolor.
@@ -95,15 +138,20 @@ export default function Home() {
             Enim officiis voluptatem quae facere assumenda earum consectetur
             harum.
           </p>
-        </div>
-        <div className="relative h-[600px] w-[400px]">
+        </motion.div>
+        <motion.div
+          className="relative h-[600px] w-[400px]"
+          initial={{ x: 20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={transition}
+        >
           <Image
             src="/picture3.webp"
             alt="Picture 3"
             layout="fill"
             objectFit="cover"
           />
-        </div>
+        </motion.div>
       </div>
       {/* Image */}
       <div className="relative flex flex-col gap-8 items-center justify-center h-[700px] mb-48 w-full">
@@ -114,7 +162,12 @@ export default function Home() {
           objectFit="cover"
           className="-z-10 brightness-75"
         />
-        <div className="flex flex-col gap-4 -ml-[600px] max-w-64">
+        <motion.div
+          className="flex flex-col gap-4 -ml-[600px] max-w-64"
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={transition}
+        >
           <p className="text-2xl max-w-64 font-bold">
             Lu Tzing Tze was a phenominal cosplayer with the abilities to summon
             endfield content and then resulting in the doctor forgetting his
@@ -130,7 +183,7 @@ export default function Home() {
             <p>Learn More</p>
             <MoveRight />
           </Link>
-        </div>
+        </motion.div>
         <Image
           src="/picture4.webp"
           alt="Picture 4"
@@ -142,42 +195,79 @@ export default function Home() {
       {/* GALLERY */}
       <div className="flex flex-col items-center justify-center">
         <div className="flex items-center">
-          <p className="text-5xl max-w-40 font-bold mb-40">
-            Cosplay Around Singapore
-          </p>
-          <Image
-            src="/gallery1.jpg"
-            alt="Gallery 1"
-            height={700}
-            width={400}
-            className="-ml-20 -z-10"
-          />
-          <Image
-            src="/gallery2.jpg"
-            alt="Gallery 2"
-            height={300}
-            width={600}
-            className="ml-40 -mt-96 h-[400px] w-[600px] object-cover border-8 p-4 border-purple-950"
-          />
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={transition}
+          >
+            <p className="text-5xl max-w-40 font-bold mb-40">
+              Cosplay Around Singapore
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={transition}
+            className="-z-10"
+          >
+            <Image
+              src="/gallery1.jpg"
+              alt="Gallery 1"
+              height={700}
+              width={400}
+              className="-ml-20"
+            />
+          </motion.div>
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={transition}
+          >
+            <Image
+              src="/gallery2.jpg"
+              alt="Gallery 2"
+              height={300}
+              width={600}
+              className="ml-40 -mt-96 h-[400px] w-[600px] object-cover border-8 p-4 border-purple-950"
+            />
+          </motion.div>
         </div>
         <div className="flex items-center w-full justify-center">
-          <Image
-            src="/gallery3.webp"
-            alt="Gallery 3"
-            height={800}
-            width={400}
-            className="h-[600px] w-[400px] object-cover -mb-[500px] border-8 p-4 border-yellow-600"
-          />
-          <p className="text-8xl font-bold tracking-widest uppercase rotate-90">
-            gallery
-          </p>
-          <Image
-            src="/gallery4.jpg"
-            alt="Gallery 4"
-            height={500}
-            width={1000}
-            className="h-[400px] w-[600px] object-cover"
-          />
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={transition}
+          >
+            <Image
+              src="/gallery3.webp"
+              alt="Gallery 3"
+              height={800}
+              width={400}
+              className="h-[600px] w-[400px] object-cover -mb-[500px] border-8 p-4 border-yellow-600"
+            />
+          </motion.div>
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={transition}
+          >
+            <p className="text-8xl font-bold tracking-widest uppercase rotate-90">
+              gallery
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={transition}
+          >
+            <Image
+              src="/gallery4.jpg"
+              alt="Gallery 4"
+              height={500}
+              width={1000}
+              className="h-[400px] w-[600px] object-cover"
+            />
+          </motion.div>
         </div>
       </div>
       <div className="flex flex-col relative py-52 items-center justify-center">
