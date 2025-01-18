@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC } from "react";
@@ -31,6 +32,7 @@ const Navbar: FC<NavbarProps> = (props) => {
   /* --------------------------------- RENDER --------------------------------- */
   return (
     <div className="flex gap-4 items-center justify-between w-full">
+      {/* NAVIGATION */}
       <div className="flex gap-12 items-center uppercase text-3xl">
         {routes.map((route) => {
           return (
@@ -47,7 +49,16 @@ const Navbar: FC<NavbarProps> = (props) => {
           );
         })}
       </div>
-      Logo
+      {/* LOGO */}
+      <Link href="/">
+        <Image
+          src="/logo.svg"
+          alt="Logo"
+          height={80}
+          width={80}
+          className="hover:scale-110 transition-transform"
+        />
+      </Link>
     </div>
   );
 };
