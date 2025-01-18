@@ -18,6 +18,9 @@ export default function Home() {
     <div className="flex flex-col gap-12 w-full">
       {/* HERO */}
       <Container>
+        <p className="text-8xl absolute left-20 font-bold uppercase">
+          Le Tzing Tze
+        </p>
         <Image
           src="/landscape1.jpg"
           alt="Landscape 1"
